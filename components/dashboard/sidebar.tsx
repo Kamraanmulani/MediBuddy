@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/auth-context"
-import { Activity, Calendar, FileText, Home, LogOut, PieChart, Pill, Settings, User } from "lucide-react"
+import { Activity, Calendar, FileText, Home, LogOut, PieChart, Pill, Settings, User, Stethoscope } from "lucide-react"
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -36,6 +36,11 @@ export function Sidebar() {
       href: "/dashboard/insights",
       icon: PieChart,
       title: "Insights",
+    },
+    {
+      href: "/dashboard/doctor-chat",
+      icon: Stethoscope,
+      title: "Ask Dr. MediBot",
     },
     {
       href: "/dashboard/profile",

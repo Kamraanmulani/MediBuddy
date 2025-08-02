@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const Appointment = require("./models/appointment");
 const User = require("./models/user");
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, '../.env') });
 // Here we would normally require an email service like nodemailer
 // const nodemailer = require("nodemailer");
 
 // Connect to MongoDB
 mongoose
   .connect(
-  "PASTE_YOUR_MONGODB_CONNECTION_STRING_HERE",
+    process.env.MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

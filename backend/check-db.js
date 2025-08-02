@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 // MongoDB connection string (from your server.js file)
-const MONGODB_URI = "PASTE_YOUR_MONGODB_CONNECTION_STRING_HERE";
+const mongoose = require("mongoose");
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, '../.env') });
+
+// MongoDB connection string from environment variables
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
 mongoose

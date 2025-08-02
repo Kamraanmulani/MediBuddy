@@ -47,32 +47,54 @@ The application includes a robust appointment reminder system:
 
 ## Getting Started
 
-1. Install dependencies:
+### Environment Setup
+
+1. **Copy environment variables:**
+   ```bash
+   # For Linux/Mac
+   ./setup-env.sh
+   
+   # For Windows PowerShell
+   .\setup-env.ps1
+   
+   # Or manually
+   cp .env.example .env
    ```
+
+2. **Configure environment variables in `.env`:**
+   - `MONGODB_URI`: Your MongoDB connection string
+   - `JWT_SECRET`: A secure random string for JWT tokens
+   - `NEXT_PUBLIC_GEMINI_API_KEY`: Your Google Gemini API key
+   - `EMAIL_USER`: Email address for sending reminders (optional)
+   - `EMAIL_PASS`: Email password or app-specific password (optional)
+
+3. **Install dependencies:**
+   ```bash
+   # Frontend dependencies
    npm install
+   
+   # Backend dependencies  
+   cd backend && npm install
    ```
 
-2. Start the development server:
-   ```
+4. **Start the development servers:**
+   ```bash
+   # Start the frontend (Next.js)
    npm run dev
-   ```
-
-3. Start the backend server:
-   ```
-   node backend/server.js
-   ```
-
-4. Start the reminder scheduler (optional):
-   ```
+   
+   # In another terminal, start the backend
+   cd backend && node server.js
+   
+   # Optionally, start the reminder scheduler
    npm run reminders
    ```
 
-## Environment Setup
+### Important Security Notes
 
-For production deployment, you should set the following environment variables:
-
-- `EMAIL_USER`: Email address for sending reminders
-- `EMAIL_PASS`: Password or app-specific password for the email account
+- Never commit your `.env` file to version control
+- Use strong, unique values for `JWT_SECRET`
+- Keep your API keys secure and rotate them regularly
+- For production, use environment variables provided by your hosting service
 
 ## Technical Stack
 

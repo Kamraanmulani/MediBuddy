@@ -1,15 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, '../.env') });
+
 const authRoutes = require("./routes/auth");
 const appointmentsRoutes = require("./routes/appointments");
 const medicationsRoutes = require("./routes/medications");
 const healthRecordsRoutes = require("./routes/healthRecords");
 const conditionsRoutes = require("./routes/conditions");
-const path = require("path");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +21,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 mongoose
   .connect(
-    "PASTE_YOUR_MONGODB_CONNECTION_STRING_HERE",
+    process.env.MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

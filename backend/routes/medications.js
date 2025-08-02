@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const Medication = require("../models/medication");
 const MedicationHistory = require("../models/medicationHistory");
 
-// JWT Secret Key
-const JWT_SECRET = "health-tracker-secret-key";
+// JWT Secret Key from environment variables
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware to authenticate user
 const authenticate = async (req, res, next) => {

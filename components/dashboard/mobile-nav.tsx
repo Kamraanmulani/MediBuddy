@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useAuth } from "@/context/auth-context"
-import { Activity, Calendar, FileText, Home, LogOut, Menu, PieChart, Pill, Settings, User } from "lucide-react"
+import { Activity, Calendar, FileText, Home, LogOut, Menu, PieChart, Pill, Settings, User, Stethoscope } from "lucide-react"
 
 interface MobileNavProps {
   open: boolean
@@ -42,6 +42,11 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
       href: "/dashboard/insights",
       icon: PieChart,
       title: "Insights",
+    },
+    {
+      href: "/dashboard/doctor-chat",
+      icon: Stethoscope,
+      title: "Ask Dr. MediBot", 
     },
     {
       href: "/dashboard/profile",

@@ -3,8 +3,8 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
-// JWT Secret Key - in production this should be in environment variables
-const JWT_SECRET = "health-tracker-secret-key";
+// JWT Secret Key from environment variables
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register route
 router.post("/register", async (req, res) => {

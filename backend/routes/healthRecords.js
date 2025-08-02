@@ -6,13 +6,13 @@ const path = require("path");
 const fs = require("fs");
 const HealthRecord = require("../models/healthRecord");
 
-// JWT Secret Key
-const JWT_SECRET = "health-tracker-secret-key";
+// JWT Secret Key from environment variables
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Set up multer storage for file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, "../uploads");
+    const uploadDir = path.join(__dirname, "..", process.env.UPLOAD_DIR || "uploads");
     // Create directory if it doesn't exist
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ 
   storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 } // Limit file size to 10MB
+  limits: { fileSize: parseInt(process.env.MAX_FILE_SIZE) || 10 * 1024 * 1024 } // Default to 10MB
 });
 
 // Middleware to authenticate user
